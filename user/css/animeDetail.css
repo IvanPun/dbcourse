@@ -1,0 +1,63 @@
+.personalInfo{
+    width: 80%;
+    margin: 5% auto 0 auto;
+    border-radius: 20px;
+    border: 1px solid #797979;
+    background-color: #eef2f9;
+    box-sizing: border-box;
+}
+
+.Info-left{
+    text-align: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.Info-right{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-size: large;
+}
+
+.personalIcon{
+    width: 50%;
+}
+
+.editInfo{
+    background-color: #fef4d5;
+    color: #ec8f73;
+}
+
+.delAcc{
+    background-color: #ec8f73;
+    color: #eef2f9;
+}
+
+.el-button{
+    margin-top: 5%;
+}
+
+.el-checkbox{
+    background-color: white;
+}
+
+.el-checkbox.is-bordered.is-checked{
+    border-color: #f4b6d1;
+}
+
+.el-checkbox__input.is-checked+.el-checkbox__label{
+    color: #c885a0;
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner{
+    background-color: #f4b6d1;
+    border-color: #f4b6d1;
+}
+
+.save_tag{
+    margin-left: 5%;
+}
+
+.el-rate{
+    display: inline-block;
+}

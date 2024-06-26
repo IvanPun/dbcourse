@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.13/lib/theme-chalk/index.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <!-- Include stylesheet -->
+    <link href="https://cdn.quilljs.com/1.3.4/quill.core.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.4/quill.bubble.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/index.css">
+    <title>主页</title>
+</head>
+<body>
+    <div id="app">
+      <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#f4b6d1" text-color="#fff3d6" active-text-color="#7bc59d">
+        <el-menu-item index="1">主页</el-menu-item>
+        <el-menu-item index="2">个人页面</el-menu-item>
+        <el-menu-item index="3">用户排行</el-menu-item>
+      </el-menu>
+        
+
+        <!--main-->
+        <div class="main-body">
+          
+          <!--search_bar-->
+          <el-row :gutter="20" class="search_bar">
+            <el-col :span="8" :offset="8"><div class="grid-content bg-purple"><el-input v-model="search" placeholder="请输入作品名称"></el-input></div></el-col>
+          </el-row>
+          
+          <!--filter-->
+          <div class="filter">
+            <div class="row"> <!--分类-->
+              <div class="col-1">
+                分类
+              </div>
+              <div class="col">
+                <el-tabs v-model="genres" @tab-click="genres_changed">
+                  <el-tab-pane label="行动" name="Action"></el-tab-pane>
+                  <el-tab-pane label="冒险" name="Adventure"></el-tab-pane>
+                  <el-tab-pane label="汽车" name="Cars"></el-tab-pane>
+                  <el-tab-pane label="喜剧片" name="Comedy"></el-tab-pane>
+                  <el-tab-pane label="痴呆" name="Dementia"></el-tab-pane>
+                  <el-tab-pane label="魔鬼" name="Demons"></el-tab-pane>
+                  <el-tab-pane label="戏剧" name="Drama"></el-tab-pane>
+                  <el-tab-pane label="Ecchi" name="Ecchi"></el-tab-pane>
+                  <el-tab-pane label="幻想" name="Fantasy"></el-tab-pane>
+                  <el-tab-pane label="游戏" name="Game"></el-tab-pane>
+                  <el-tab-pane label="Harem" name="Harem"></el-tab-pane>
+                  <el-tab-pane label="Hentai" name="Hentai"></el-tab-pane>
+                  <el-tab-pane label="历史" name="Historical"></el-tab-pane>
+                  <el-tab-pane label="恐怖" name="Horror"></el-tab-pane>
+                </el-tabs>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-1"></div>
+              <div class="col">
+                <el-tabs v-model="genres" @tab-click="genres_changed">
+                  <el-tab-pane label="Josei" name="Josei"></el-tab-pane>
+                  <el-tab-pane label="儿童" name="Kids"></el-tab-pane>
+                  <el-tab-pane label="魔术" name="Magic"></el-tab-pane>
+                  <el-tab-pane label="武术" name="Martial Arts"></el-tab-pane>
+                  <el-tab-pane label="机械" name="Mecha"></el-tab-pane>
+                  <el-tab-pane label="军事" name="Military"></el-tab-pane>
+                  <el-tab-pane label="音乐" name="Music"></el-tab-pane>
+                  <el-tab-pane label="神秘" name="Mystery"></el-tab-pane>
+                  <el-tab-pane label="戏仿" name="Parody"></el-tab-pane>
+                  <el-tab-pane label="警察" name="Police"></el-tab-pane>
+                  <el-tab-pane label="心灵" name="Romance"></el-tab-pane>
+                  <el-tab-pane label="浪漫" name="Hentai"></el-tab-pane>
+                  <el-tab-pane label="武士" name="Samurai"></el-tab-pane>
+                  <el-tab-pane label="学校" name="School"></el-tab-pane>
+                </el-tabs>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-1"></div>
+              <div class="col">
+                <el-tabs v-model="genres" @tab-click="genres_changed">
+                  <el-tab-pane label="科幻" name="Sci-Fi"></el-tab-pane>
+                  <el-tab-pane label="正年" name="Seinen"></el-tab-pane>
+                  <el-tab-pane label="Shoujo" name="Shoujo"></el-tab-pane>
+                  <el-tab-pane label="Shoujo Ai" name="Shoujo Ai"></el-tab-pane>
+                  <el-tab-pane label="生命" name="Slice of Life"></el-tab-pane>
+                  <el-tab-pane label="空间" name="Space"></el-tab-pane>
+                  <el-tab-pane label="体育" name="Sports"></el-tab-pane>
+                  <el-tab-pane label="超能力" name="Super Power"></el-tab-pane>
+                  <el-tab-pane label="超自然" name="Supernatural"></el-tab-pane>
+                  <el-tab-pane label="惊悚" name="Thriller"></el-tab-pane>
+                  <el-tab-pane label="吸血鬼" name="Vampire"></el-tab-pane>
+                  <el-tab-pane label="yaoi" name="yaoi"></el-tab-pane>
+                  <el-tab-pane label="尤里" name="Yuri"></el-tab-pane>
+                  <el-tab-pane label="未知" name="Unknown"></el-tab-pane>
+                </el-tabs>
+              </div>
+            </div>
+
+            <el-divider></el-divider>
+
+            <div class="row">
+              <div class="col-1"><!--类型-->
+                类型
+              </div>
+              <div class="col">
+                <el-tabs v-model="type" @tab-click="type_changed">
+                  <el-tab-pane label="TV" name="TV"></el-tab-pane>
+                  <el-tab-pane label="Movie" name="Movie"></el-tab-pane>
+                  <el-tab-pane label="OVA" name="OVA"></el-tab-pane>
+                  <el-tab-pane label="Special" name="Special"></el-tab-pane>
+                  <el-tab-pane label="ONA" name="ONA"></el-tab-pane>
+                  <el-tab-pane label="Music" name="Music"></el-tab-pane>
+                  <el-tab-pane label="Unknown" name="Unknown"></el-tab-pane>
+                </el-tabs>
+              </div>
+            </div>
+            
+            <el-divider></el-divider>
+
+            <div class="row">
+              <div class="col-1"><!--状态-->
+                状态
+              </div>
+              <div class="col">
+                <el-tabs v-model="type" @tab-click="type_changed">
+                  <el-tab-pane label="Finished Airing" name="Finished Airing"></el-tab-pane>
+                  <el-tab-pane label="Currently Airing" name="Currently Airing"></el-tab-pane>
+                  <el-tab-pane label="null" name="null"></el-tab-pane>
+                  <el-tab-pane label="Not yet aired" name="Not yet aired"></el-tab-pane>
+                </el-tabs>
+              </div>
+            </div>
+            
+            <el-divider></el-divider>
+
+            <div class="row">
+              <div class="col-1"><!--原始素材-->
+                原始素材
+              </div>
+              <div class="col">
+                <el-tabs v-model="type" @tab-click="type_changed">
+                  <el-tab-pane label="Original" name="Original"></el-tab-pane>
+                  <el-tab-pane label="Manga" name="Manga"></el-tab-pane>
+                  <el-tab-pane label="Light novel" name="Light novel"></el-tab-pane>
+                  <el-tab-pane label="Game" name="Game"></el-tab-pane>
+                  <el-tab-pane label="Visual novel" name="Visual novel"></el-tab-pane>
+                  <el-tab-pane label="4-koma manga" name="4-koma manga"></el-tab-pane>
+                  <el-tab-pane label="Novel" name="Novel"></el-tab-pane>
+                  <el-tab-pane label="Unknown" name="Unknown"></el-tab-pane>
+                  <el-tab-pane label="Other" name="Other"></el-tab-pane>
+                </el-tabs>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-1"></div>
+              <div class="col">
+                <el-tabs v-model="type" @tab-click="type_changed">
+                  <el-tab-pane label="Picture book" name="Picture book"></el-tab-pane>
+                  <el-tab-pane label="Web manga" name="Web manga"></el-tab-pane>
+                  <el-tab-pane label="Music" name="Music"></el-tab-pane>
+                  <el-tab-pane label="Radio" name="Radio"></el-tab-pane>
+                  <el-tab-pane label="Book" name="Book"></el-tab-pane>
+                  <el-tab-pane label="Card game" name="Card game"></el-tab-pane>
+                  <el-tab-pane label="Digital manga" name="Digital manga"></el-tab-pane>
+                </el-tabs>
+              </div>
+            </div>
+
+            <el-divider></el-divider>
+
+            <div class="row">
+              <div class="col-1"><!--评分-->
+                评分
+              </div>
+              <div class="col">
+                <el-tabs v-model="score" @tab-click="type_changed">
+                  <el-tab-pane label=">=9.5" name="1"></el-tab-pane>
+                  <el-tab-pane label=">=9.0" name="2"></el-tab-pane>
+                  <el-tab-pane label=">=8.5" name="3"></el-tab-pane>
+                  <el-tab-pane label=">=8.0" name="4"></el-tab-pane>
+                  <el-tab-pane label=">=7.5" name="5"></el-tab-pane>
+                  <el-tab-pane label=">=7.0" name="6"></el-tab-pane>
+                  <el-tab-pane label=">=6.0" name="7"></el-tab-pane>
+                  <el-tab-pane label=">=5.0" name="8"></el-tab-pane>
+                  <el-tab-pane label=">=3.0" name="9"></el-tab-pane>
+                  <el-tab-pane label="3.0" name="10"></el-tab-pane>
+                </el-tabs>
+              </div>
+            </div>
+
+            <el-divider></el-divider>
+
+            <div class="row">
+              <div class="col-1"><!--排序属性-->
+                排序属性
+              </div>
+              <div class="col">
+                <el-tabs v-model="type" @tab-click="type_changed">
+                  <el-tab-pane label="不排序" name="1"></el-tab-pane>
+                  <el-tab-pane label="评分" name="2"></el-tab-pane>
+                  <el-tab-pane label="喜爱数" name="3"></el-tab-pane>
+                  <el-tab-pane label="评分数" name="4"></el-tab-pane>
+                  <el-tab-pane label="收藏数" name="5"></el-tab-pane>
+                  <el-tab-pane label="正在看的用户数" name="6"></el-tab-pane>
+                  <el-tab-pane label="已看完的用户数" name="7"></el-tab-pane>
+                </el-tabs>
+              </div>
+            </div>
+
+          </div>
+                        
+            
+
+          </div>
+
+          <!--anime_table-->
+          <div class="anime_table">
+            <div class="row row-cols-1 row-cols-md-6 g-4">
+              <div v-for="item in 10" :key="item">
+                <div class="col">
+                  <div class="card" @click="checkdetail">
+                    <img src="../test_photo/1.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">作品名称</h5>
+                      <p class="card-text">即将开播</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        
+    </div>
+</body>
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!-- Quill JS Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue-quill-editor@3.0.6/dist/vue-quill-editor.js"></script>
+
+<script src='https://code.jquery.com/jquery-3.0.0.min.js'></script>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../login/js/user_checkLogin.js"></script>
+<script src="js/index.js"></script>
+</html>

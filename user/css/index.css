@@ -1,0 +1,39 @@
+.el-input__inner{
+    border-color: #f4b6d1;
+    border-radius: 20px;
+    
+}
+
+.search_bar{
+    margin-top: 5%;
+}
+
+.filter{
+    width: 80%;
+    margin: 5% auto 0 auto;
+    padding: 2%;
+    border-radius: 20px;
+    border: 1px solid #f4b6d1;
+    background-color: #fcebf3;
+    box-sizing: border-box;
+}
+
+.col-1{
+    display: flex;
+    align-items: center;
+}
+
+.col{
+    display: flex;
+    align-items: center;
+}
+
+.anime_table{
+    width: 90%;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.el-divider{
+    background-color: #f4b6d1;
+}
